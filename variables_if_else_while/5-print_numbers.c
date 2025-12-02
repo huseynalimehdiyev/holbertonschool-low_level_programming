@@ -1,17 +1,17 @@
 #include <stdio.h>
 
 /**
- * main - prints the alphabet in lowercase, except q and e,
- *        followed by a new line
+ * main - prints the digits 0 to 9
  *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-    int i;
-	for (i=0; i<10; i++)
-	   printf("%d",i);
-    printf("\n");
-    
+	int i;
+
+	for (i = 0; i < 10; i++)
+		printf("%d", i);
+	printf("\n");
+
 	return (0);
 }
