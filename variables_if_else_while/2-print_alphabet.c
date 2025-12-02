@@ -1,20 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-/** 
-* more headers goes there 
-*
-* Hello guys:
-*betty style doc for function main goes there 
-*/
+
+/**
+ * main - prints the lowercase alphabet followed by a new line
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-	char char1='a';
-	while (char1<='z')
-	{
-	    putchar("%c",char1);
-	    char1++;
-	}
-	putchar("\n");
+	char c;
+
+	for (c = 'a'; c <= 'z'; c++)
+		putchar(c);
+	putchar('\n');
+
 	return (0);
 }
