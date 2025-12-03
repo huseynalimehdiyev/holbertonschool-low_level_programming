@@ -1,13 +1,13 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
- * main - Entry point
- *
- * Return: 0
+ * print_alphabet - prints the alphabet in lowercase
  */
-int print_alphabet(void)
+void print_alphabet(void)
 {
-write(1, "_putchar\n", 9);
+	char c;
 
-return (0);
+	for (c = 'a'; c <= 'z'; c++)
+		_putchar(c);
+	_putchar('\n');
 }
