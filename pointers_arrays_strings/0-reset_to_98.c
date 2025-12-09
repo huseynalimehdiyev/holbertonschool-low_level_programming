@@ -1,10 +1,10 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
- * main - check the code 
+ * reset_to_98 - updates the value of an integer to 98
+ * @n: pointer to the integer to update
  *
- * Return: Always 0.
+ * Return: void
  */
 int main(void)
 {
