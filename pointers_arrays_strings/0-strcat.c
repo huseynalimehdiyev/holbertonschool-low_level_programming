@@ -3,9 +3,9 @@
 /**
  * _strcat - concatenates two strings
  * @dest: destination string
- * @src: source string
+ * @src: source string to append
  *
- * Return: pointer to dest
+ * Return: pointer to resulting string dest
  */
 char *_strcat(char *dest, char *src)
 {
@@ -13,8 +13,9 @@ char *_strcat(char *dest, char *src)
     int j = 0;
 
     while (dest[i] != '\0')
+    {
         i++;
-
+    }
 
     while (src[j] != '\0')
     {
@@ -27,3 +28,4 @@ char *_strcat(char *dest, char *src)
 
     return (dest);
 }
+dsdqwqwdfdsfsdfdshfdsiofhdsik
