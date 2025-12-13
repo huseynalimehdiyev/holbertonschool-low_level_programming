@@ -1,50 +1,42 @@
 #include "main.h"
-#include <stdint.h>
 #include <limits.h>
 
 /**
- * _atoi - converts a string to an integer safely
- * @s: string to convert
+ * _atoi - converts a string to an integer
+ * @s: pointer to string
  *
- * Return: the converted integer
+ * Return: integer value
  */
 int _atoi(char *s)
 {
-	int sign = 1;
-	int found_digit = 0;
-	int64_t num = 0;
+	int i;
+	int sign;
+	int result;
 
-	/* Blank line after declarations */
-	while (*s)
+	i = 0;
+	sign = 1;
+	result = 0;
+
+	/* handle signs before digits */
+	while (s[i] != '\0' && (s[i] < '0' || s[i] > '9'))
 	{
-		if (*s == '-' && !found_digit)
-		{
-			sign = -sign;
-		}
-		else if (*s >= '0' && *s <= '9')
-		{
-			int digit = *s - '0';
-
-			/* Blank line after declaration */
-			found_digit = 1;
-			num = num * 10 + digit;
-		}
-		else if (found_digit)
-		{
-			break;
-		}
-
-		s++;
+		if (s[i] == '-')
+			sign *= -1;
+		i++;
 	}
 
-	if (sign == 1 && num > INT_MAX)
+	/* build number as NEGATIVE (safe for INT_MIN) */
+	while (s[i] >= '0' && s[i] <= '9')
 	{
-		return (INT_MAX);
-	}
-	else if (sign == -1 && -num < INT_MIN)
-	{
-		return (INT_MIN);
+		if (result < (INT_MIN + (s[i] - '0')) / 10)
+			return (INT_MIN);
+
+		result = result * 10 - (s[i] - '0');
+		i++;
 	}
 
-	return ((int)(sign * num));
+	if (sign == 1)
+		result = -result;
+
+	return (result);
 }
