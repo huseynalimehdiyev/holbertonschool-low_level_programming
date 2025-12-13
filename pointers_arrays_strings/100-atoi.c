@@ -12,12 +12,12 @@ int _atoi(char *s)
 	int i;
 	int sign;
 	int result;
+	int limit;
 
 	i = 0;
 	sign = 1;
 	result = 0;
 
-	/* handle signs before digits */
 	while (s[i] != '\0' && (s[i] < '0' || s[i] > '9'))
 	{
 		if (s[i] == '-')
@@ -25,11 +25,12 @@ int _atoi(char *s)
 		i++;
 	}
 
-	/* build number as NEGATIVE (safe for INT_MIN) */
+	limit = (sign == -1) ? INT_MIN : -INT_MAX;
+
 	while (s[i] >= '0' && s[i] <= '9')
 	{
-		if (result < (INT_MIN + (s[i] - '0')) / 10)
-			return (INT_MIN);
+		if (result < (limit + (s[i] - '0')) / 10)
+			return (limit);
 
 		result = result * 10 - (s[i] - '0');
 		i++;
