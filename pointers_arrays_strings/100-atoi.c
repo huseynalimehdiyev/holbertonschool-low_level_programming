@@ -1,46 +1,50 @@
 #include "main.h"
+#include <stdint.h>
 #include <limits.h>
 
 /**
- * _atoi - converts a string to an integer
- * @s: pointer to string
+ * _atoi - converts a string to an integer safely
+ * @s: string to convert
  *
- * Return: integer value
+ * Return: the converted integer
  */
 int _atoi(char *s)
 {
-	int i;
-	int sign;
-	unsigned long acc;
-	unsigned long neg_limit;
+	int sign = 1;
+	int found_digit = 0;
+	int64_t num = 0;
 
-	i = 0;
-	sign = 1;
-	acc = 0;
-	neg_limit = (unsigned long)INT_MAX + 1UL;
-
-	/* handle signs before digits */
-	while (s[i] != '\0' && (s[i] < '0' || s[i] > '9'))
+	/* Blank line after declarations */
+	while (*s)
 	{
-		if (s[i] == '-')
-			sign *= -1;
-		i++;
+		if (*s == '-' && !found_digit)
+		{
+			sign = -sign;
+		}
+		else if (*s >= '0' && *s <= '9')
+		{
+			int digit = *s - '0';
+
+			/* Blank line after declaration */
+			found_digit = 1;
+			num = num * 10 + digit;
+		}
+		else if (found_digit)
+		{
+			break;
+		}
+
+		s++;
 	}
 
-	/* build absolute value in acc (unsigned) */
-	while (s[i] >= '0' && s[i] <= '9')
+	if (sign == 1 && num > INT_MAX)
 	{
-		acc = acc * 10UL + (unsigned long)(s[i] - '0');
-
-		if (sign == 1 && acc > (unsigned long)INT_MAX)
-			return (INT_MAX);
-		if (sign == -1 && acc > neg_limit)
-			return (INT_MIN);
-
-		i++;
+		return (INT_MAX);
+	}
+	else if (sign == -1 && -num < INT_MIN)
+	{
+		return (INT_MIN);
 	}
 
-	if (sign == -1)
-		return ((int)(- (long)acc));
-	return ((int)acc);
+	return ((int)(sign * num));
 }
