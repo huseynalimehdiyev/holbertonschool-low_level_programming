@@ -13,7 +13,7 @@ int _atoi(char *s)
 	int sign = 1;
 	int found_digit = 0;
 	int64_t num = 0;
-	
+
 	while (*s)
 	{
 		if (*s == '-' && !found_digit)
@@ -24,7 +24,6 @@ int _atoi(char *s)
 		{
 			int digit = *s - '0';
 
-			/* Blank line after declaration */
 			found_digit = 1;
 			num = num * 10 + digit;
 		}
