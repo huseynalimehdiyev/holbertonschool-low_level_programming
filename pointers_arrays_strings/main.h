@@ -28,4 +28,5 @@ void print_chessboard(char (*a)[8]);
 void print_diagsums(int *a, int size);
 int _atoi(char *s);
 unsigned int _strspn(char *s, char *accept);
+void set_string(char **s, char *to);
 #endif
