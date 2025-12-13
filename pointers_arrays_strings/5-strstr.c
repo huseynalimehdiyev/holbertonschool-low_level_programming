@@ -13,7 +13,7 @@ char *_strstr(char *haystack, char *needle)
 {
     int i, j;
 
-    if (*needle == '\0')  /* If needle is an empty string, return haystack */
+    if (*needle == '\0')
         return (haystack);
 
     for (i = 0; haystack[i] != '\0'; i++)
@@ -23,9 +23,9 @@ char *_strstr(char *haystack, char *needle)
             if (haystack[i + j] != needle[j])
                 break;
         }
-        if (needle[j] == '\0')  /* If we reached the end of needle */
+        if (needle[j] == '\0')
             return (haystack + i);
     }
 
-    return (NULL);  /* If needle was not found */
+    return (NULL);
 }
