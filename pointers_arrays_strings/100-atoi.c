@@ -13,8 +13,7 @@ int _atoi(char *s)
 	int sign = 1;
 	int found_digit = 0;
 	int64_t num = 0;
-
-	/* Blank line after declarations */
+	
 	while (*s)
 	{
 		if (*s == '-' && !found_digit)
