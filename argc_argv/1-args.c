@@ -1,31 +1,15 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
- * _sqrt_helper - helper function to find natural square root
- * @n: number
- * @guess: current guess
+ * main - prints the number of  arguments passed into the program
+ * @argc: argument count
+ * @argv: array of arguments
  *
- * Return: natural square root, or -1 if not found
+ * Return: Always 0 (Success)
  */
-int _sqrt_helper(int n, int guess)
+int main(int argc, char *argv[])
 {
-	if ((guess * guess) == n)
-		return (guess);
-	if ((guess * guess) > n)
-		return (-1);
-	return (_sqrt_helper(n, guess + 1));
-}
-/**
- * _sqrt_recursion - returns the natural square root of a number
- * @n: number
- *
- * Return: natural square root, or -1 if not found
- */
-int _sqrt_recursion(int n)
-{
-	if (n < 0)
-		return (-1);
-	if (n == 0 || n == 1)
-		return (n);
-	return (_sqrt_helper(n, 1));
+	(void)argv;
+	printf("%d\n", argc - 1);
+	return (0);
 }
