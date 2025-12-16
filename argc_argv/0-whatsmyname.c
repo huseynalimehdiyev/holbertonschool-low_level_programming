@@ -8,7 +8,7 @@
  */
 int main(int argc, char *argv[])
 {
-    (void)argc;            /* argc istifadə olunmur, xətanı önləmək üçün */
-    printf("%s\n", argv[0]); /* argv[0] proqramın adı */
+    (void)argc;
+    printf("%s\n", argv[0]);
     return (0);
 }
