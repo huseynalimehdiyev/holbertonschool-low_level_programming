@@ -25,5 +25,5 @@
         array[i] = c;
     }
     
-    return(array)
+    return(array);
  }
