@@ -6,9 +6,6 @@
  * @s: the string to measure
  *
  * Return: the length of the string
- *
- * Description: This function loops through each character of the string
- *              until the null-terminator is found and counts the characters.
  */
 int string_len(char *s)
 {
@@ -23,7 +20,12 @@ int string_len(char *s)
 	return (i);
 }
 
-/* copy string to new memory */
+/**
+ * copy_string - allocates memory and copies a string
+ * @s: the string to copy
+ *
+ * Return: pointer to the copied string, or NULL if it fails
+ */
 char *copy_string(char *s)
 {
 	int len, i;
@@ -43,7 +45,15 @@ char *copy_string(char *s)
 	return (copy);
 }
 
-/* create new dog */
+/**
+ * new_dog - creates a new dog
+ * @name: name of the dog
+ * @age: age of the dog
+ * @owner: owner of the dog
+ *
+ * Return: pointer to the new dog, NULL if it fails
+ */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d;
@@ -73,7 +83,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 	return (d);
 }
 
-/* print dog info */
 #include <stdio.h>
 void print_dog(dog_t *d)
 {
