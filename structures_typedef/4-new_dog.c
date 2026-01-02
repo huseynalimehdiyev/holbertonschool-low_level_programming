@@ -1,4 +1,5 @@
-#include <stdlib.h>
+#include <stdlib.h> /* malloc, free, NULL */
+#include <stdio.h>  /* printf */
 #include "dog.h"
 
 /**
@@ -6,6 +7,8 @@
  * @s: the string to measure
  *
  * Return: the length of the string
+ *
+ * Description: Loops through each character until the null-terminator is found.
  */
 int string_len(char *s)
 {
@@ -25,6 +28,9 @@ int string_len(char *s)
  * @s: the string to copy
  *
  * Return: pointer to the copied string, or NULL if it fails
+ *
+ * Description: Allocates memory for the string and copies each character
+ *              including the null-terminator. Returns NULL if malloc fails.
  */
 char *copy_string(char *s)
 {
@@ -35,6 +41,7 @@ char *copy_string(char *s)
 		return (NULL);
 
 	len = string_len(s) + 1;
+
 	copy = malloc(len);
 	if (!copy)
 		return (NULL);
@@ -51,9 +58,11 @@ char *copy_string(char *s)
  * @age: age of the dog
  * @owner: owner of the dog
  *
- * Return: pointer to the new dog, NULL if it fails
+ * Return: pointer to the new dog, or NULL if it fails
+ *
+ * Description: Allocates memory for a new dog structure, makes deep copies
+ *              of name and owner, sets the age, and handles allocation failures.
  */
-
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d;
@@ -83,7 +92,15 @@ dog_t *new_dog(char *name, float age, char *owner)
 	return (d);
 }
 
-#include <stdio.h>
+/**
+ * print_dog - prints a struct dog
+ * @d: pointer to the dog to print
+ *
+ * Return: Nothing
+ *
+ * Description: Prints the name, age, and owner of the dog. Prints "(nil)"
+ *              for name or owner if they are NULL. Does nothing if d is NULL.
+ */
 void print_dog(dog_t *d)
 {
 	if (!d)
