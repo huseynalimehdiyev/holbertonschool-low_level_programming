@@ -29,8 +29,8 @@ int string_len(char *s)
  *
  * Return: pointer to the copied string, or NULL if it fails
  *
- * Description: Allocates memory for the string and copies each character
- *              including the null-terminator. Returns NULL if malloc fails.
+ * Description: Allocates memory for the string and copies each character.
+ *              Includes the null-terminator. Returns NULL if malloc fails.
  */
 char *copy_string(char *s)
 {
@@ -60,8 +60,9 @@ char *copy_string(char *s)
  *
  * Return: pointer to the new dog, or NULL if it fails
  *
- * Description: Allocates memory for a new dog structure, makes deep copies
- *              of name and owner, sets the age, and handles allocation failures.
+ * Description: Allocates memory for a new dog structure.
+ *              Makes deep copies of name and owner, sets the age,
+ *              and handles allocation failures safely.
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
@@ -98,8 +99,9 @@ dog_t *new_dog(char *name, float age, char *owner)
  *
  * Return: Nothing
  *
- * Description: Prints the name, age, and owner of the dog. Prints "(nil)"
- *              for name or owner if they are NULL. Does nothing if d is NULL.
+ * Description: Prints the name, age, and owner of the dog.
+ *              Prints "(nil)" for name or owner if they are NULL.
+ *              Does nothing if d is NULL.
  */
 void print_dog(dog_t *d)
 {
