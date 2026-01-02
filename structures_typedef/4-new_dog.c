@@ -9,7 +9,8 @@
  * Return: the length of the string
  *
  * Description: Loops through each 
- * character until the null-terminator is found.
+ *              character until the null-terminator is found.
+ * 
  */
 int string_len(char *s)
 {
