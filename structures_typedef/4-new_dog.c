@@ -1,7 +1,15 @@
 #include <stdlib.h>
 #include "dog.h"
 
-/* calculate string length */
+/**
+ * string_len - calculates the length of a string
+ * @s: the string to measure
+ *
+ * Return: the length of the string
+ *
+ * Description: This function loops through each character of the string
+ *              until the null-terminator is found and counts the characters.
+ */
 int string_len(char *s)
 {
 	int i = 0;
