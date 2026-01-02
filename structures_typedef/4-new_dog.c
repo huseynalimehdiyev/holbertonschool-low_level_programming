@@ -1,7 +1,50 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdlib.h> /* malloc, free, NULL */
 #include "dog.h"
+
+/**
+ * string_len - calculates the length of a string
+ * @s: the string to measure
+ *
+ * Return: the length of the string
+ */
+int string_len(char *s)
+{
+	int i = 0;
+
+	if (s == NULL)
+		return (0);
+
+	while (s[i] != '\0')
+		i++;
+
+	return (i);
+}
+
+/**
+ * copy_string - allocates memory and copies a string
+ * @s: the string to copy
+ *
+ * Return: pointer to the copied string, or NULL if it fails
+ */
+char *copy_string(char *s)
+{
+	int len, i;
+	char *copy;
+
+	if (s == NULL)
+		return (NULL);
+
+	len = string_len(s) + 1;
+
+	copy = malloc(len);
+	if (copy == NULL)
+		return (NULL);
+
+	for (i = 0; i < len; i++)
+		copy[i] = s[i];
+
+	return (copy);
+}
 
 /**
  * new_dog - creates a new dog
@@ -14,46 +57,28 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d;
-	char *new_name, *new_owner;
 
-	/* allocate memory for the struct */
 	d = malloc(sizeof(dog_t));
 	if (d == NULL)
 		return (NULL);
 
-	/* allocate memory and copy name */
-	if (name != NULL)
+	d->name = copy_string(name);
+	if (name != NULL && d->name == NULL)
 	{
-		new_name = malloc(strlen(name) + 1);
-		if (new_name == NULL)
-		{
-			free(d);
-			return (NULL);
-		}
-		strcpy(new_name, name);
+		free(d);
+		return (NULL);
 	}
-	else
-		new_name = NULL;
 
-	/* allocate memory and copy owner */
-	if (owner != NULL)
+	d->owner = copy_string(owner);
+	if (owner != NULL && d->owner == NULL)
 	{
-		new_owner = malloc(strlen(owner) + 1);
-		if (new_owner == NULL)
-		{
-			free(new_name);
-			free(d);
-			return (NULL);
-		}
-		strcpy(new_owner, owner);
+		if (d->name)
+			free(d->name);
+		free(d);
+		return (NULL);
 	}
-	else
-		new_owner = NULL;
 
-	/* assign values */
-	d->name = new_name;
 	d->age = age;
-	d->owner = new_owner;
 
 	return (d);
 }
